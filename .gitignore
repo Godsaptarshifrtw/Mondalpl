@@ -33,4 +33,6 @@ Thumbs.db
 # Firebase
 .firebase/
 firebase-debug.log
+# Local firebase secrets file (do NOT commit real credentials)
+client/src/firebase.secrets.js
 
