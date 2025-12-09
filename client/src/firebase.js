@@ -1,17 +1,18 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 import { getAnalytics } from 'firebase/analytics';
 
 // Your web app's Firebase configuration
+// These values are loaded from environment variables for security
 const firebaseConfig = {
-  apiKey: "AIzaSyCT1OVbTS_vIIY--joUJUp8acTA53bL0IY",
-  authDomain: "mondalpl-30ea5.firebaseapp.com",
-  projectId: "mondalpl-30ea5",
-  storageBucket: "mondalpl-30ea5.firebasestorage.app",
-  messagingSenderId: "1091570180886",
-  appId: "1:1091570180886:web:e293555435ebc06a8f6637",
-  measurementId: "G-CKEZ3D4N5X"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -20,6 +21,17 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Enable offline persistence for better user experience
+try {
+  enableIndexedDbPersistence(db);
+} catch (err) {
+  if (err.code === 'failed-precondition') {
+    console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+  } else if (err.code === 'unimplemented') {
+    console.warn('The current browser does not support persistence.');
+  }
+}
 
 // Initialize Analytics (only in browser environment)
 let analytics;

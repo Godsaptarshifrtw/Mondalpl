@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import Sidebar from './Sidebar';
 import StockManagement from './StockManagement';
 import BillGeneration from './BillGeneration';
+import Analytics from './Analytics';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -31,7 +32,8 @@ function Dashboard() {
         </div>
         <div className="dashboard-main">
           <Routes>
-            <Route path="/" element={<StockManagement />} />
+            <Route path="/" element={<Analytics />} />
+            <Route path="analytics" element={<Analytics />} />
             <Route path="stock" element={<StockManagement />} />
             <Route path="bills" element={<BillGeneration />} />
           </Routes>

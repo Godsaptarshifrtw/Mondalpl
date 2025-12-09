@@ -10,6 +10,12 @@ function Sidebar({ onLogout }) {
       </div>
       <nav className="sidebar-nav">
         <NavLink
+          to="/dashboard/analytics"
+          className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+        >
+          📊 Analytics
+        </NavLink>
+        <NavLink
           to="/dashboard/stock"
           className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
         >

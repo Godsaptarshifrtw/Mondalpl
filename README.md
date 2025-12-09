@@ -1,22 +1,36 @@
-# Mondalpl
+# Mondalpl - Stock Management System
 
-# Inventory Management System
+A full-stack **cloud-powered** inventory management system built with React and Firebase.
 
-A full-stack inventory management system built with React, Node.js, and Firebase.
+## 🚀 Deployment Status
 
-## Features
+**Ready to Deploy on Vercel!**
 
-- **Authentication**: Login and Signup with Firebase Authentication
-- **Dashboard**: Modern dashboard with sidebar navigation
-- **Stock Management**: Add and delete products with real-time updates
-- **Bill Generation**: Create bills with product selection and cart functionality
+See [`VERCEL_DEPLOYMENT_GUIDE.md`](VERCEL_DEPLOYMENT_GUIDE.md) for step-by-step deployment instructions.
+
+---
+
+## ✨ Features
+
+- ✅ **Cloud Database** - All data stored in Firebase Firestore
+- ✅ **User Authentication** - Secure login with Firebase Auth
+- ✅ **Real-time Sync** - Instant updates across all devices
+- ✅ **Stock Management** - Add, edit, delete products
+- ✅ **Bill Generation** - Create invoices with PDF download
+- ✅ **Analytics Dashboard** - Sales graphs, top products, low stock alerts
+- ✅ **Customer Management** - Store customer information
+- ✅ **Search & Filter** - Find products and bills quickly
+- ✅ **Offline Mode** - Works even without internet
+- ✅ **CSV Export** - Export data for analysis
 
 ## Tech Stack
 
-- **Frontend**: React 18, React Router
-- **Backend**: Node.js, Express
-- **Database**: Firebase Firestore
+- **Frontend**: React 18, React Router DOM
+- **Database**: Firebase Firestore ☁️
 - **Authentication**: Firebase Auth
+- **Export**: jsPDF, CSV
+- **Real-time**: Firebase Listeners
+- **Deployment**: Vercel (Recommended)
 
 ## Setup Instructions
 
@@ -26,48 +40,97 @@ A full-stack inventory management system built with React, Node.js, and Firebase
 npm run install-all
 ```
 
-### 2. Firebase Configuration
+### 2. Configure Environment Variables
 
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project
-3. Enable Authentication (Email/Password)
-4. Create a Firestore database
-5. Copy your Firebase config from Project Settings
-6. Update `client/src/firebase.js` with your Firebase config:
-
-```javascript
-const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id"
-};
-```
-
-### 3. Firestore Rules
-
-Set up Firestore security rules in Firebase Console:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
-```
-
-### 4. Run the Application
+Create a `.env` file in the `client/` folder:
 
 ```bash
-npm run dev
+cp .env.example client/.env
 ```
 
-This will start both the client (React app on port 3000) and server (Node.js on port 5000).
+Then add your Firebase configuration values:
+
+```env
+REACT_APP_FIREBASE_API_KEY=your_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+REACT_APP_FIREBASE_MEASUREMENT_ID=your_measurement_id
+```
+
+### 3. Firebase Setup
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project or use existing one
+3. Enable Firestore Database
+4. Enable Authentication (Email/Password)
+5. Copy config values to `.env`
+6. Set Firestore security rules (see below)
+## 🚀 Quick Start
+
+### For Permission Error (Current Issue)
+👉 See: [`SOLUTION_PERMISSION_ERROR.md`](SOLUTION_PERMISSION_ERROR.md)
+
+### For Complete Setup
+👉 See: [`FIREBASE_SETUP_COMPLETE.md`](FIREBASE_SETUP_COMPLETE.md)
+
+### For Code Examples
+👉 See: [`FIREBASE_QUICK_REFERENCE.md`](FIREBASE_QUICK_REFERENCE.md)
+
+---
+
+## 📚 Documentation Index
+
+### 🔴 Troubleshooting Permission Error
+| File | Purpose |
+|------|---------|
+| [`SOLUTION_PERMISSION_ERROR.md`](SOLUTION_PERMISSION_ERROR.md) | **START HERE** - Complete solution |
+| [`QUICK_FIX_PERMISSION_ERROR.md`](QUICK_FIX_PERMISSION_ERROR.md) | Ultra-quick reference (2 min) |
+| [`FIREBASE_PERMISSION_FIX.md`](FIREBASE_PERMISSION_FIX.md) | Detailed troubleshooting |
+| [`FIRESTORE_RULES_VISUAL_GUIDE.md`](FIRESTORE_RULES_VISUAL_GUIDE.md) | Step-by-step with visuals |
+
+### 📘 Complete Firebase Guides
+| File | Purpose |
+|------|---------|
+| [`FIREBASE_SETUP_COMPLETE.md`](FIREBASE_SETUP_COMPLETE.md) | Full setup & deployment |
+| [`FIREBASE_INTEGRATION_GUIDE.md`](FIREBASE_INTEGRATION_GUIDE.md) | Complete API reference |
+| [`FIREBASE_QUICK_REFERENCE.md`](FIREBASE_QUICK_REFERENCE.md) | Quick code snippets |
+| [`FIREBASE_VISUAL_SUMMARY.md`](FIREBASE_VISUAL_SUMMARY.md) | Architecture diagrams |
+| [`FIREBASE_IMPLEMENTATION_SUMMARY.md`](FIREBASE_IMPLEMENTATION_SUMMARY.md) | What was implemented |
+
+### ✅ Checklists
+| File | Purpose |
+|------|---------|
+| [`DEPLOYMENT_CHECKLIST.md`](DEPLOYMENT_CHECKLIST.md) | Pre-deployment checklist |
+
+---
+
+## Tech Stack
+
+- **Frontend**: React 18, React Router
+- **Backend**: Node.js, Express (Optional)
+- **Database**: Firebase Firestore ☁️
+- **Authentication**: Firebase Auth
+- **Real-time**: Firebase Listeners
+- **Export**: jsPDF, CSV
+
+---
+
+## ✅ What's Configured
+
+✅ Firebase Firestore Database
+✅ User Authentication
+✅ Real-time Data Listeners
+✅ Offline Persistence
+✅ Product Management
+✅ Bill Generation
+✅ Customer Management
+✅ Analytics & Reports
+✅ Data Validation
+✅ Security Rules
+✅ CSV Export
 
 ## Project Structure
 
